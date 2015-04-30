@@ -87,4 +87,9 @@ config LOGO_GB_CLUT224
 	depends on LOGO
 	default n
 
+config LOGO_GEDUINO_CLUT224
+	bool "224-color Geduino Foundation logo"
+	depends on LOGO
+	default n
+
 endif # LOGO

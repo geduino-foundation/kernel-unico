@@ -104,6 +104,10 @@ const struct linux_logo * __init_refok fb_find_logo(int depth)
 		/* Genius Bytes logo */
 		logo = &logo_gb_clut224;
 #endif
+#ifdef CONFIG_LOGO_GEDUINO_CLUT224
+		/* Geduino Foundation logo */
+		logo = &logo_geduino_clut224;
+#endif
 	}
 	return logo;
 }
