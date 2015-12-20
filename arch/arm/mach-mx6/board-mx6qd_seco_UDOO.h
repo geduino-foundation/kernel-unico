@@ -380,6 +380,7 @@ static unsigned int mx6q_set_in_outputmode_low[] = {
 	MX6Q_PAD_SD4_DAT7__GPIO_MODE,
 	MX6Q_PAD_CSIO_DAT18__GPIO_MODE,
 	MX6Q_PAD_EIM_WAIT__GPIO_MODE,	
+	MX6Q_PAD_EIM_A16__GPIO_MODE,
 };
 
 static unsigned int mx6q_set_in_outputmode_high[] = {
@@ -447,7 +448,6 @@ static unsigned int mx6q_set_in_inputmode[] = {
 	MX6Q_PAD_DISP0_DAT19__GPIO_MODE,   
 	MX6Q_PAD_DISP0_DAT20__GPIO_MODE,   
 	MX6Q_PAD_DISP0_DAT21__GPIO_MODE,   	
-	MX6Q_PAD_EIM_A16__GPIO_MODE,
 	
 	MX6Q_PAD_GPIO_18__GPIO_MODE, 	
 	MX6Q_PAD_NANDF_D0__GPIO_MODE,   		
