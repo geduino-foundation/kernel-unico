@@ -113,12 +113,14 @@
 #define AC97_GPIO_RESET				IMX_GPIO_NR(2, 30)
 #define SSI_CH_NUMBER				1
 #endif
+/******************* POPWER *******************/
+#define MX6_SECO_UDOO_SAM3X_RESET		IMX_GPIO_NR(1, 0)
+#define MX6_SECO_UDOO_EXTERNAL_POWER_OFF	IMX_GPIO_NR(2, 22)
 /******************* CAN *******************/
 //#define MX6_SECO_UDOO_CAN1_STBY		IMX_GPIO_NR(1, 2)
 //#define MX6_SECO_UDOO_CAN1_EN			IMX_GPIO_NR(1, 4)
 
 //#define MX6_SECO_UDOO_CAP_TCH_INT1	IMX_GPIO_NR(1, 9)
-
 
 void __init early_console_setup(unsigned long base, struct clk *clk);
 static struct clk *sata_clk;
@@ -971,6 +973,22 @@ static void __init mx6_seco_UDOO_board_init(void)
 		printk("failed to get MX6_SECO_UDOO_LVDS_PNL_CTRL: %d\n", ret);
 	} else {
 		gpio_direction_output(MX6_SECO_UDOO_LVDS_PNL_CTRL, 1);
+	}
+
+	ret = gpio_request (MX6_SECO_UDOO_SAM3X_RESET, "SAM3X reset");
+	if (ret) {
+		printk("failed to get MX6_SECO_UDOO_SAM3X_RESET: %d\n", ret);
+	} else {
+		gpio_direction_output(MX6_SECO_UDOO_SAM3X_RESET, 1);
+		gpio_free(MX6_SECO_UDOO_SAM3X_RESET);
+	}
+
+	ret = gpio_request (MX6_SECO_UDOO_EXTERNAL_POWER_OFF, "External power off");
+	if (ret) {
+		printk("failed to get MX6_SECO_UDOO_EXTERNAL_POWER_OFF: %d\n", ret);
+	} else {
+		gpio_direction_output(MX6_SECO_UDOO_EXTERNAL_POWER_OFF, 1);
+		gpio_free(MX6_SECO_UDOO_EXTERNAL_POWER_OFF);
 	}
 
 #ifdef CONFIG_FEC_1588

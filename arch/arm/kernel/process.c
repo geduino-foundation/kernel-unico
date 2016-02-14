@@ -239,8 +239,9 @@ void machine_shutdown(void)
 
 #include <linux/gpio.h>
 #if defined(CONFIG_MACH_MX6_SECO_UDOO)
-	#define HALT_GPIO		IMX_GPIO_NR(2, 4)
-	#define MX6_SECO_ARD_RESET	IMX_GPIO_NR(1, 0) 
+	#define MX6_SECO_UDOO_HALT			IMX_GPIO_NR(2, 4)
+	#define MX6_SECO_UDOO_SAM3X_RESET		IMX_GPIO_NR(1, 0)
+	#define MX6_SECO_UDOO_EXTERNAL_POWER_OFF	IMX_GPIO_NR(2, 22)
 #endif
 
 void machine_halt(void)
@@ -248,17 +249,30 @@ void machine_halt(void)
 	int ret;
 #if defined(CONFIG_MACH_MX6_SECO_UDOO)
 
-	gpio_direction_output(MX6_SECO_ARD_RESET, 0);
-	printk(KERN_EMERG "Sam3x in reset\n");
-	msleep(5);
-
-	ret = gpio_request (HALT_GPIO, "HALT");
+	ret = gpio_request (MX6_SECO_UDOO_SAM3X_RESET, "SAM3X Reset");
 	if (ret) {
-		printk(KERN_EMERG "failed to get HALT: %d\n", ret);
-	} else {			
-		gpio_direction_output (HALT_GPIO, 1);
+		printk(KERN_EMERG "failed to get MX6_SECO_UDOO_SAM3X_RESET: %d\n", ret);
+	} else {
+		gpio_direction_output (MX6_SECO_UDOO_SAM3X_RESET, 0);
+		printk(KERN_EMERG "SAM3X in reset (LOW)\n");
+	}
+
+	ret = gpio_request (MX6_SECO_UDOO_EXTERNAL_POWER_OFF, "External power off");
+	if (ret) {
+		printk(KERN_EMERG "failed to get MX6_SECO_UDOO_EXTERNAL_POWER_OFF: %d\n", ret);
+	} else {
+		gpio_direction_output (MX6_SECO_UDOO_EXTERNAL_POWER_OFF, 0);
+		printk(KERN_EMERG "External power off (LOW)\n");
+	}
+
+	ret = gpio_request (MX6_SECO_UDOO_HALT, "Halt");
+	if (ret) {
+		printk(KERN_EMERG "failed to get MX6_SECO_UDOO_HALT: %d\n", ret);
+	} else {
+		gpio_direction_output (MX6_SECO_UDOO_HALT, 1);
 		printk(KERN_EMERG "Halt\n");
 	}
+
 #endif
 	machine_shutdown();
 	while (1);

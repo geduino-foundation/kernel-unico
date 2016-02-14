@@ -232,6 +232,7 @@ static iomux_v3_cfg_t mx6qd_seco_UDOO_pads[] = {
 	MX6Q_PAD_NANDF_D4__GPIO_2_4,					// 5v enable
 	MX6Q_PAD_EIM_A19__GPIO_2_19,					// writeprotect_spi_flash
 	MX6Q_PAD_EIM_WAIT__GPIO_5_0_CORRECT,			// usb otg selector
+	MX6Q_PAD_EIM_A16__GPIO_2_22,					// pin 38 - External power off (active low)
 
 // UART4 - internal serial imx6 --> sam3x (/dev/ttymxc3)
 #ifdef INTERNAL_SERIAL_ENABLED
@@ -331,7 +332,6 @@ static iomux_v3_cfg_t mx6qd_seco_UDOO_pads[] = {
 		// MX6Q_PAD_DISP0_DAT20__ECSPI1_SCLK,	
 	MX6Q_PAD_DISP0_DAT21__GPIO_5_15,						// pin 37
 		// MX6Q_PAD_DISP0_DAT21__ECSPI1_MOSI,
-	MX6Q_PAD_EIM_A16__GPIO_2_22,							// pin 38
 	MX6Q_PAD_GPIO_18__GPIO_7_13,							// pin 39
 	MX6Q_PAD_NANDF_D0__GPIO_2_0,							// pin 40
 		// MX6Q_PAD_NANDF_D0__USDHC1_DAT4,
@@ -380,11 +380,9 @@ static unsigned int mx6q_set_in_outputmode_low[] = {
 	MX6Q_PAD_SD4_DAT7__GPIO_MODE,
 	MX6Q_PAD_CSIO_DAT18__GPIO_MODE,
 	MX6Q_PAD_EIM_WAIT__GPIO_MODE,	
-	MX6Q_PAD_EIM_A16__GPIO_MODE,
 };
 
 static unsigned int mx6q_set_in_outputmode_high[] = {
-	MX6Q_PAD_GPIO_0__GPIO_MODE,
 	MX6Q_PAD_NANDF_D5__GPIO_MODE,
 	MX6Q_PAD_EIM_EB3__GPIO_MODE,
 	MX6Q_PAD_NANDF_CS0__GPIO_MODE,
