@@ -348,8 +348,8 @@ static iomux_v3_cfg_t mx6qd_seco_UDOO_pads[] = {
 		// MX6Q_PAD_DISP0_DAT22__ECSPI1_MISO,
 	MX6Q_PAD_DISP0_DAT23__GPIO_5_17,						// pin 46
 		// MX6Q_PAD_DISP0_DAT23__ECSPI1_SS0,
-	MX6Q_PAD_EIM_D25__GPIO_3_25,							// pin 47
-		// MX6Q_PAD_EIM_D25__UART3_RXD,
+//	MX6Q_PAD_EIM_D25__GPIO_3_25,							// pin 47
+		MX6Q_PAD_EIM_D25__UART3_RXD,
 //	MX6Q_PAD_KEY_ROW1__GPIO_4_9,							// pin 48
 		MX6Q_PAD_KEY_ROW1__UART5_RXD,
 //	MX6Q_PAD_KEY_COL1__GPIO_4_8,							// pin 49
@@ -361,9 +361,9 @@ static iomux_v3_cfg_t mx6qd_seco_UDOO_pads[] = {
 		// MX6Q_PAD_EIM_CS1__ECSPI2_MOSI,
 	MX6Q_PAD_EIM_CS0__GPIO_2_23, 							// pin 52
 		// MX6Q_PAD_EIM_CS0__ECSPI2_SCLK,
-	MX6Q_PAD_EIM_D24__GPIO_3_24,							// pin 53
+//	MX6Q_PAD_EIM_D24__GPIO_3_24,							// pin 53
 		// MX6Q_PAD_EIM_D24__ECSPI2_SS2,      
-		// MX6Q_PAD_EIM_D24__UART3_TXD,  
+		MX6Q_PAD_EIM_D24__UART3_TXD,  
 		// MX6Q_PAD_EIM_D24__ECSPI1_SS2,
 
 	MX6Q_PAD_GPIO_7__GPIO_1_7,								// can tx
